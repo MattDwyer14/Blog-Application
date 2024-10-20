@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post
 
 def post_list(request):
-    posts = Post.objects.published.all()
+    posts = Post.published.all()
     return render(request,
-                  'blog/post/list.html',
+                  'blog_app/post/list.html',
                   {'posts': posts})
 
 def post_detail(request, year, month, day, post):
@@ -14,5 +14,5 @@ def post_detail(request, year, month, day, post):
                              publish__month=month,
                              publish__day=day)
     return render(request,
-                  'blog/post/detail.hmtl',
-                  {'posts': post})
+                  'blog_app/post/detail.html',
+                  {'post': post})
